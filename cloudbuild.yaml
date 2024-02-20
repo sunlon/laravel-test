@@ -16,3 +16,9 @@ steps:
 
   # Step 5: Cleanup or additional tasks if necessary
 
+steps:
+- name: 'docker/compose:1.29.2'
+  args: ['up', '--build', '-d']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['tag', 'laraveltest:latest', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
+images: ['gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
