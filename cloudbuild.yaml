@@ -1,0 +1,18 @@
+steps:
+  # Step 1: Checkout code from your repository
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/sunlon/laravel-test.git', '.']
+
+  # Step 2: Build your Docker images using docker-compose
+  - name: 'docker/compose:1.29.2'
+    args: ['up', '--build', '-d']
+
+  # Step 3: Run additional tasks if necessary
+  # For example, running database migrations or tests
+
+  # Step 4: Deploy your application using docker-compose
+  - name: 'docker/compose:1.29.2'
+    args: ['down']
+
+  # Step 5: Cleanup or additional tasks if necessary
+
